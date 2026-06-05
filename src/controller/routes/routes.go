@@ -1,0 +1,18 @@
+package routes
+
+import (
+	"github.com/amon-olimpio-brisa/meu-primeiro-crud-go/src/controller"
+	"github.com/gin-gonic/gin"
+)
+
+func InitRoutes(
+	r *gin.RouterGroup,
+	userController controller.UserControllerInterface) {
+
+	r.GET("/getUSerById/:userId", userController.FindUserByID)
+	r.GET("/getUSerByEmail/:userEmail", userController.FindUserByEmail)
+	r.POST("createUser", userController.CreateUser)
+	r.PUT("/updateUser/:userId", userController.UpdateUser)
+	r.DELETE("/deleteUser/:userId", userController.DeleteUser)
+
+}
